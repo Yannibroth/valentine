@@ -47,7 +47,7 @@
     </div>
 
     <div class="snack-container">
-        <h2>Snacks die ich besorgen soll 🍿</h2>
+        <h2>Snacks die ich besorgen soll🍿</h2>
         <input type="text" id="snackInput" placeholder="You">
     </div>
 
@@ -67,11 +67,16 @@
             let snacks = document.getElementById("snackInput").value;
             
             if (!selectedFilm) {
-                alert("Kein Film ausgewählt");
+                alert("Kein Film ausgewählt!");
                 return;
             }
 
-            alert("Film: " + selectedFilm + "\nSnacks: " + (snacks || "nichts fr?") + "\n❤️");
+            let subject = "Sui";
+            let body = `Film;"${selectedFilm}".\nSnacks: ${snacks || "fr keine???"}\n❤️`;
+
+            let mailtoLink = `mailto:yannick.alsleben@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            window.location.href = mailtoLink;
         }
     </script>
 </body>
