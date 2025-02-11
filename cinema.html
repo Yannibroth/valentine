@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcher Film am Freitag?</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+            background-color: #FFC0CB; 
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .film-container { display: flex; justify-content: center; gap: 20px; margin-top: 20px; }
+        .film { 
+            width: 150px; 
+            cursor: pointer; 
+            border: 3px solid transparent;
+            transition: transform 0.3s ease, border 0.3s ease;
+        }
+        .film.selected { 
+            border: 3px solid blue; 
+            transform: scale(1.1); 
+        }
+        .snack-container { margin-top: 20px; }
+        #submit { 
+            margin-top: 20px; 
+            padding: 10px 20px; 
+            font-size: 18px; 
+            background-color: purple; 
+            color: white; 
+            border: none; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcher Film für unser Date? 🎬</h1>
+    <div class="film-container">
+        <img src="Captain.jpeg" alt="Film 1" class="film" onclick="selectFilm('Film 1', this)">
+        <img src="Vaiana.jpg" alt="Film 2" class="film" onclick="selectFilm('Film 2', this)">
+        <img src="Mufasa.jpg" alt="Film 3" class="film" onclick="selectFilm('Film 3', this)">
+    </div>
+
+    <div class="snack-container">
+        <h2>Snacks die ich besorgen soll 🍿</h2>
+        <input type="text" id="snackInput" placeholder="You">
+    </div>
+
+    <button id="submit" onclick="submitChoice()">Abschicken</button>
+
+    <script>
+        let selectedFilm = null;
+
+        function selectFilm(filmName, element) {
+            document.querySelectorAll('.film').forEach(img => img.classList.remove('selected'));
+            
+            selectedFilm = filmName;
+            element.classList.add('selected');
+        }
+
+        function submitChoice() {
+            let snacks = document.getElementById("snackInput").value;
+            
+            if (!selectedFilm) {
+                alert("Please select a movie first!");
+                return;
+            }
+
+            alert("You chose: " + selectedFilm + "\nSnacks: " + (snacks || "No snacks chosen") + "\nCan't wait for our date! ❤️");
+        }
+    </script>
+</body>
+</html>

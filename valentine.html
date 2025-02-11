@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body { 
+            text-align: center; 
+            font-family: Arial, sans-serif; 
+            background-color: #FFC0CB; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        img { width: 250px; } 
+        .button-container { margin-top: 20px; position: relative; }
+        .button { 
+            padding: 15px 30px; 
+            font-size: 20px; 
+            cursor: pointer; 
+            margin: 10px; 
+            border: none;
+            transition: all 0.3s ease;
+        }
+        #noButton { background-color: red; color: white; position: relative; }
+        #yesButton { background-color: green; color: white; }
+    </style>
+</head>
+<body>
+    <h1>Will you be my Valentine? ❤️</h1>
+    <img src="pikachu.gif" alt="Cute GIF"> 
+    <div class="button-container">
+        <button id="yesButton" class="button">Yes</button>
+        <button id="noButton" class="button">No</button>
+    </div>
+
+    <script>
+        let clickCount = 0;
+        let yesButton = document.getElementById("yesButton");
+        let noButton = document.getElementById("noButton");
+    
+        noButton.addEventListener("click", function() {
+            clickCount++;
+    
+            let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentSize + 10) + "px";
+            yesButton.style.padding = (currentSize + 10) + "px";
+        });
+
+        yesButton.addEventListener("click", function() {
+            window.location.href = "cinema.html";
+        });
+    </script>    
+</body>
+</html>
